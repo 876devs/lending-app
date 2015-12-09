@@ -1,0 +1,129 @@
+<div class="row">
+  <div class="col-md-8">
+    <h3>Hi, we would like to get to know you better.</h3>
+    <form>
+      <label for="">Full Name</label>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <input class="form-control" placeholder="First Name" name="first_name">
+          </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+            <input class="form-control" placeholder="Last Name" name="last-name">
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="business_name">Legal Business Name</label>
+        <input class="form-control" placeholder="AMC Trading" name="business_name">
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input class="form-control" placeholder="johnbrown@amctrading.com" name="email">
+      </div>
+
+      <div class="form-group">
+        <label for="location">Home Address</label>
+        <input class="form-control" placeholder="421 South West" name="location">
+      </div>
+
+      <div class="form-group">
+        <input class="form-control" placeholder="New York" name="city">
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <!--<div class="form-control">-->
+          <select class="form-control">
+            <option value="">Choose State</option>
+          </select>
+          <!--</div>-->
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <input class="form-control" placeholder="ZIP Code">
+          </div>
+        </div>
+      </div>
+
+      <label>Date of Birth</label>
+
+
+      <div class="row">
+        <div class="col-md-4">
+          <div class="form-group">
+            <!--<div class="form-control">-->
+            <select class="form-control">
+              <option value="">Month</option>
+            </select>
+            <!--</div>-->
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="form-group">
+            <select class="form-control">
+              <option value="">Day</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <select class="form-control">
+              <option value="">Year</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="contact">Phone Number</label>
+            <input class="form-control" name="contact">
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="password">Create Your Password</label>
+            <input class="form-control" name="password" placeholder="Min 8 characters">
+          </div>
+        </div>
+      </div>
+
+      <div class="checkbox">
+        <label>
+          <input type="checkbox"> I give permission to Lending App to request my personal credit report and agree to the <a href="#">terms of this application</a>
+        </label>
+        </div>
+
+      <!--<div class="row">-->
+        <!--<div class="col-md-6">-->
+          <!--<div class="form-group">-->
+            <!--<button class="btn btn-lg btn-primary" type="button">CONTINUE</button>-->
+
+          <!--</div>-->
+        <!--</div>-->
+        <!--<div class="col-md-6">-->
+          <!--<div class="form-group">-->
+            <!--<button class="btn btn-lg btn-primary" type="button">Cancel</button>-->
+            <!--</div>-->
+        <!--</div>-->
+      <!--</div>-->
+      <div class="form-group">
+        <button class="btn btn-primary" type="button" ng-click="next('business')">CONTINUE</button>
+        <button class="btn btn-default" type="reset">Cancel</button>
+      </div>
+    </form>
+  </div>
+  <div class="col-md-1"></div>
+  <div class="col-md-3">
+    <%- include progress.ejs%>
+  </div>
+
+</div>
+
