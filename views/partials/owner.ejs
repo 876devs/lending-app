@@ -1,52 +1,152 @@
 <div class="row">
   <div class="col-md-8">
-    <h3>Hi, we would like to get to know you better.</h3>
-    <form>
+    <!--<h3>Hi, we would like to get to know you better.</h3>-->
+    <form name="ownerForm" novalidate>
       <label for="">Full Name</label>
       <div class="row">
         <div class="col-md-6">
-          <div class="form-group">
-            <input class="form-control" placeholder="First Name" name="first_name">
+          <div class="form-group"
+               ng-class="{ 'has-error': ownerForm.first_name.$touched && ownerForm.first_name.$invalid,
+                'has-success': ownerForm.first_name.$touched && ownerForm.first_name.$valid}">
+            <input
+                name="first_name"
+                type="text"
+                class="form-control"
+                placeholder="First Name"
+                minlength="3"
+                maxlength="30"
+                ng-minlength="3"
+                ng-maxlength="30"
+                required
+                ng-model="owner.ow_first_name">
+            <div class="help-block" ng-messages="ownerForm.first_name.$error" ng-show="ownerForm.first_name.$touched">
+              <div ng-messages-include="partials/message.ejs"></div>
+            </div>
           </div>
+
         </div>
         <div class="col-md-6">
-            <div class="form-group">
-            <input class="form-control" placeholder="Last Name" name="last-name">
+            <div class="form-group" ng-class="{ 'has-error': ownerForm.last_name.$touched && ownerForm.last_name.$invalid,
+          'has-success': ownerForm.last_name.$touched && ownerForm.last_name.$valid}">
+            <input class="form-control"
+                   name="last_name"
+                   placeholder="Last Name"
+                   minlength="3"
+                   maxlength="30"
+                   ng-minlength="3"
+                   ng-maxlength="30"
+                   required
+                   ng-model="owner.ow_last_name">
+              <div class="help-block" ng-messages="ownerForm.last_name.$error" ng-show="ownerForm.last_name.$touched">
+                <div ng-messages-include="partials/message.ejs"></div>
+              </div>
           </div>
         </div>
       </div>
 
-      <div class="form-group">
-        <label for="business_name">Legal Business Name</label>
-        <input class="form-control" placeholder="AMC Trading" name="business_name">
-      </div>
-
-      <div class="form-group">
+      <div class="form-group" ng-class="{ 'has-error': ownerForm.email.$touched && ownerForm.email.$invalid,
+          'has-success': ownerForm.email.$touched && ownerForm.email.$valid}">
         <label for="email">Email</label>
-        <input class="form-control" placeholder="johnbrown@amctrading.com" name="email">
+        <input class="form-control"
+               placeholder="johnbrown@amctrading.com"
+               name="email"
+               minlength="3"
+               maxlength="30"
+               ng-minlength="3"
+               ng-maxlength="30"
+               required
+              ng-model="owner.ow_email">
+        <div class="help-block" ng-messages="ownerForm.email.$error" ng-show="ownerForm.email.$touched">
+          <div ng-messages-include="partials/message.ejs"></div>
+        </div>
       </div>
 
-      <div class="form-group">
+      <div class="form-group" ng-class="{ 'has-error': ownerForm.location.$touched && ownerForm.location.$invalid,
+          'has-success': ownerForm.location.$touched && ownerForm.location.$valid}">
         <label for="location">Home Address</label>
-        <input class="form-control" placeholder="421 South West" name="location">
-      </div>
-
-      <div class="form-group">
-        <input class="form-control" placeholder="New York" name="city">
+        <input class="form-control"
+               placeholder="421 South West"
+               name="location"
+               minlength="3"
+               maxlength="30" 
+               ng-minlength="3"
+               ng-maxlength="30"
+               required
+              ng-model="owner.ow_home_address"
+              googlePlace>
+        <div class="help-block" ng-messages="ownerForm.location.$error" ng-show="ownerForm.location.$touched">
+          <div ng-messages-include="partials/message.ejs"></div>
+        </div>
       </div>
 
       <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-4">
+          <div class="form-group" ng-class="{ 'has-error': ownerForm.city.$touched && ownerForm.city.$invalid,'has-success': ownerForm.city.$touched && ownerForm.city.$valid}">
+            <input class="form-control"
+                   placeholder="New York"
+                   name="city"
+                   minlength="2"
+                   maxlength="15"
+                   ng-minlength="2"
+                   ng-maxlength="15"
+                   required
+                   ng-model="owner.ow_city">
+            <div class="help-block" ng-messages="ownerForm.city.$error" ng-show="ownerForm.city.$touched">
+              <div ng-messages-include="partials/message.ejs"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
           <!--<div class="form-control">-->
-          <select class="form-control">
-            <option value="">Choose State</option>
-          </select>
+          <div class="form-group" ng-class="{ 'has-error': ownerForm.state.$touched && ownerForm.state.$invalid,'has-success': ownerForm.state.$touched && ownerForm.state.$valid}">
+            <input class="form-control" 
+                    placeholder="State" 
+                    name="state"
+                    minlength="2"
+                    maxlength="15"
+                    ng-minlength="2"
+                    ng-maxlength="15"
+                    required
+                    ng-model="owner.ow_state">
+            <div class="help-block" ng-messages="ownerForm.state.$error" ng-show="ownerForm.state.$touched">
+              <div ng-messages-include="partials/message.ejs"></div>
+            </div>
+          </div>
           <!--</div>-->
         </div>
-        <div class="col-md-6">
-          <div class="form-group">
-            <input class="form-control" placeholder="ZIP Code">
+        <div class="col-md-4">
+          <div class="form-group" ng-class="{ 'has-error': ownerForm.zip.$touched && ownerForm.zip.$invalid,'has-success': ownerForm.zip.$touched && ownerForm.zip.$valid}">
+            <input class="form-control" 
+                   name="zip"
+                   placeholder="ZIP Code" 
+                    minlength="5"
+                    maxlength="5"
+                    ng-minlength="5"
+                    ng-maxlength="5"
+                    required
+                   ng-model="owner.ow_zip">
+            <div class="help-block" ng-messages="ownerForm.zip.$error" ng-show="ownerForm.zip.$touched">
+              <div ng-messages-include="partials/message.ejs"></div>
+            </div>
           </div>
+        </div>
+      </div>
+
+
+      <div class="form-group" ng-class="{ 'has-error': ownerForm.contact.$touched && ownerForm.contact.$invalid,'has-success': ownerForm.contact.$touched && ownerForm.contact.$valid}">
+        <label for="contact">Cell Phone</label>
+        <input class="form-control" 
+              name="contact" 
+              placeholder="Cell Phone"
+              required
+              minlength="11"
+              maxlength="11"
+              ng-minlength="11"
+              ng-maxlength="11"
+              ng-model="owner.ow_contact">
+        <div class="help-block" ng-messages="ownerForm.contact.$error" ng-show="ownerForm.contact.$touched">
+          <div ng-messages-include="partials/message.ejs"></div>
         </div>
       </div>
 
@@ -57,8 +157,8 @@
         <div class="col-md-4">
           <div class="form-group">
             <!--<div class="form-control">-->
-            <select class="form-control">
-              <option value="">Month</option>
+            <select class="form-control" ng-model="owner.ow_month" ng-options="month.name for month in months">
+              <!--<option value="">Month</option>-->
             </select>
             <!--</div>-->
           </div>
@@ -66,15 +166,13 @@
 
         <div class="col-md-4">
           <div class="form-group">
-            <select class="form-control">
-              <option value="">Day</option>
-            </select>
+            <select class="form-control" ng-model="owner.ow_day" ng-options="day.name for day in days">
+              </select>
           </div>
         </div>
         <div class="col-md-4">
           <div class="form-group">
-            <select class="form-control">
-              <option value="">Year</option>
+            <select class="form-control" ng-model="owner.ow_year" ng-options="year.name for year in years" >
             </select>
           </div>
         </div>
@@ -82,40 +180,51 @@
 
       <div class="row">
         <div class="col-md-6">
-          <div class="form-group">
-            <label for="contact">Phone Number</label>
-            <input class="form-control" name="contact">
+          <div class="form-group" ng-class="{ 'has-error': ownerForm.ssn.$touched && ownerForm.ssn.$invalid,'has-success': ownerForm.ssn.$touched && ownerForm.ssn.$valid}">
+            <label>SSN</label>
+            <input class="form-control" 
+                    name="ssn" 
+                   placeholder="123-45-6789" 
+                   minlength="9"
+                   maxlength="9"
+                   ng-minlength="9"
+                   ng-maxlength="9"
+                   ng-model="owner.ow_ssn">
+            <div class="help-block" ng-messages="ownerForm.ssn.$error" ng-show="ownerForm.ssn.$touched">
+              <div ng-messages-include="partials/message.ejs"></div>
+            </div>
           </div>
         </div>
         <div class="col-md-6">
-          <div class="form-group">
-            <label for="password">Create Your Password</label>
-            <input class="form-control" name="password" placeholder="Min 8 characters">
+          <div class="form-group" ng-class="{ 'has-error': ownerForm.ownership.$touched && ownerForm.ownership.$invalid,'has-success': ownerForm.ownership.$touched && ownerForm.ownership.$valid}">
+          <label>Ownership</label>
+          <input class="form-control" 
+                 name="ownership"
+                 placeholder="Ownership" 
+                 ng-model="owner.ow_ownership"
+                 minlength="3"
+                 maxlength="3" 
+                 ng-minlength="3"
+                 ng-maxlength="3"
+                 required>
+          <div class="help-block" ng-messages="ownerForm.ownership.$error" ng-show="ownerForm.ownership.$touched">
+            <div ng-messages-include="partials/message.ejs"></div>
           </div>
+        </div>
         </div>
       </div>
 
+
       <div class="checkbox">
         <label>
-          <input type="checkbox"> I give permission to Lending App to request my personal credit report and agree to the <a href="#">terms of this application</a>
+          <input type="checkbox" ng-model="owner.ow_appAuth">
+          Applicant(s) authorizes its assigns, agents, banks or financial institutions to obtain
+          an investigate or consumer report from a credit bureau or a credit agency and to investigate
+          the references given on any other statement or dara obtained from applicant.
         </label>
         </div>
-
-      <!--<div class="row">-->
-        <!--<div class="col-md-6">-->
-          <!--<div class="form-group">-->
-            <!--<button class="btn btn-lg btn-primary" type="button">CONTINUE</button>-->
-
-          <!--</div>-->
-        <!--</div>-->
-        <!--<div class="col-md-6">-->
-          <!--<div class="form-group">-->
-            <!--<button class="btn btn-lg btn-primary" type="button">Cancel</button>-->
-            <!--</div>-->
-        <!--</div>-->
-      <!--</div>-->
       <div class="form-group">
-        <button class="btn btn-primary" type="button" ng-click="next('business')">CONTINUE</button>
+        <button class="btn btn-primary" type="button" ng-click="next('company')" ng-disabled="ownerForm.$invalid">CONTINUE</button>
         <button class="btn btn-default" type="reset">Cancel</button>
       </div>
     </form>

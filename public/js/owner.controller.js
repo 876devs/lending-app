@@ -1,13 +1,23 @@
 /**
- * Created by tremaine on 12/8/15.
+ * Created by tremaine on 12/15/15.
  */
-angular.module('ownerModule',[])
-  .controller('OwnerController', ['$scope', 'GoToService',
-    function($scope,GoToService){
-
-  $scope.next = function(path){
-    GoToService.goTo(path);
-  }
+(function(){
+  angular
+    .module('ownerModule',[])
+    .controller('OwnerController', function($scope, dateService, nextPageService){
+      
+      $scope.months = dateService.getMonths();
+      $scope.days = dateService.getDays();
+      $scope.years = dateService.getYears();
+      $scope.owner = {};
+      $scope.owner.ow_month = $scope.months[0];
+      $scope.owner.ow_day = $scope.days[0];
+      $scope.owner.ow_year = $scope.years[0];
       $scope.step = 1;
-      $scope.percent = 25;
-}]);
+      $scope.percent  = 25;
+  
+      $scope.next = function(path){
+        nextPageService.nextPage(path);
+      }; 
+  });
+})();
