@@ -64,8 +64,37 @@
 	
 	app.service('nextPageService', function($location){
 		this.nextPage = function(path){
-			console.log(path);
 			$location.path('/' + path);
 		};
 	});
+
+	app.service('entityTypeService', function(){
+		this.getTypes = function(){
+			return [ {"name": "Entity", "value": ""},
+					{"name": "LLC", "value": 'LLC'},
+					{"name": "Corporation", "value": 'Corporation'},
+					{"name": "Partnership", "value": 'Partnership'},
+					{"name": "Sole Proprietor", "value": 'Sole Proprietor'},
+					{"name": "LLP", "value": 'LLP'}];
+		}
+	});
+
+	app.service('fileUploadService', ['$http', function($http){
+		this.upload = function(file, url){
+			var formData = new FormData(),
+				isUploaded = false;
+
+			formData.append('file', file);
+
+			return $http.post(url, formData, {
+				transformRequest: angular.indentity,
+				headers: {'Content-Type': undefined}
+			}).success(function(){
+				
+			}).error(function(){
+				
+			});
+		 //return isUploaded;
+		}	
+	}]);
 })();

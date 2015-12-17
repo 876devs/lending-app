@@ -10,6 +10,7 @@ var bodyParser = require('body-parser');
 var routes = require('./routes/index');
 var users = require('./routes/user');
 var docusign_routes = require('./routes/docusign/docusign_routes');
+var upload_routes = require('./routes/upload/upload');
 
 var app = express();
 
@@ -34,6 +35,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', routes);
 app.use('/users', users);
 app.use('/', docusign_routes);
+app.use('/', upload_routes);
 
 /// catch 404 and forward to error handler
 app.use(function(req, res, next) {

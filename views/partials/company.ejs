@@ -1,66 +1,234 @@
 <div class="row">
   <div class="col-md-8">
-    <h3>We are making progress. Tell us about your business.</h3>
-    <form>
+    <!-- <h3>We are making progress. Tell us about your business.</h3> -->
+    <form name="companyForm">
 
-      <div class="form-group">
-        <label for="location">Business Address</label>
-        <input class="form-control" placeholder="421 South West" name="location">
-      </div>
-
-      <div class="form-group">
-        <input class="form-control" placeholder="New York" name="city">
+      <div class="form-group" ng-class="{ 'has-error': companyForm.company_name.$touched && companyForm.company_name.$invalid, 'has-success': companyForm.company_name.$touched && companyForm.company_name.$valid}">
+        <label>Compnay Legal Name</label>
+        <input class="form-control" 
+                placeholder="AMC Trading Inc"
+                name="company_name"
+                ng-model="company.co_name"
+                minlength="5"
+                maxlength="30"
+                ng-minlength="5"
+                ng-maxlength="30"
+                required>
+        <div class="help-block" ng-messages="companyForm.company_name.$error" ng-show="companyForm.company_name.$touched">
+              <div ng-messages-include="partials/message.ejs"></div>
+        </div>
       </div>
 
       <div class="row">
-        <div class="col-md-6">
+          <div class="col-md-8">
+              <div class="form-group" ng-class="{ 'has-error': companyForm.company_dba.$touched && companyForm.company_dba.$invalid, 'has-success': companyForm.company_dba.$touched && companyForm.company_dba.$valid}">
+                  <label>Compnay DBA Name</label>
+                  <input class="form-control" 
+                          placeholder="AMC Feeds"
+                          name="company_dba"
+                          ng-model="company.co_dba"
+                          minlength="5"
+                          maxlength="30"
+                          ng-minlength="5"
+                          ng-maxlength="30"
+                          required>
+                  <div class="help-block" ng-messages="companyForm.company_dba.$error" ng-show="companyForm.company_dba.$touched">
+                        <div ng-messages-include="partials/message.ejs"></div>
+                  </div>
+              </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group" ng-class="{ 'has-error': companyForm.tax_id.$touched && companyForm.tax_id.$invalid, 'has-success': companyForm.tax_id.$touched && companyForm.tax_id.$valid}">
+            <label>Tax ID</label>
+              <input class="form-control" 
+                      placeholder="Tax ID"
+                      name="tax_id"
+                      ng-model="company.co_tax_id"
+                      minlength="5"
+                      maxlength="10"
+                      ng-minlength="5"
+                      ng-maxlength="10">
+              <div class="help-block" ng-messages="companyForm.tax_id.$error" ng-show="companyForm.tax_id.$touched">
+                  <div ng-messages-include="partials/message.ejs"></div>
+              </div>
+            </div>
+          </div>
+             
+      </div>
+   
+
+      <div class="form-group" ng-class="{ 'has-error': companyForm.location.$touched && companyForm.location.$invalid,
+          'has-success': companyForm.location.$touched && companyForm.location.$valid}">
+        <label for="location">Business Address</label>
+        <input class="form-control" 
+                placeholder="421 South West" 
+                name="location"
+                minlength="3"
+                maxlength="30" 
+                ng-minlength="3"
+                ng-maxlength="30"
+                required
+                ng-model="company.co_address"
+              company>
+              <div class="help-block" ng-messages="companyForm.location.$error" ng-show="companyForm.location.$touched">
+          <div ng-messages-include="partials/message.ejs"></div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-4">
+          <div class="form-group" ng-class="{ 'has-error': companyForm.city.$touched && companyForm.city.$invalid,'has-success': companyForm.city.$touched && companyForm.city.$valid}">
+            <input class="form-control"
+                   placeholder="New York"
+                   name="city"
+                   minlength="2"
+                   maxlength="15"
+                   ng-minlength="2"
+                   ng-maxlength="15"
+                   required
+                   ng-model="company.co_city">
+            <div class="help-block" ng-messages="companyForm.city.$error" ng-show="companyForm.city.$touched">
+              <div ng-messages-include="partials/message.ejs"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
           <!--<div class="form-control">-->
-          <select class="form-control">
-            <option value="">Choose State</option>
-          </select>
+          <div class="form-group" ng-class="{ 'has-error': companyForm.state.$touched && companyForm.state.$invalid,'has-success': companyForm.state.$touched && companyForm.state.$valid}">
+            <input class="form-control" 
+                    placeholder="State" 
+                    name="state"
+                    minlength="2"
+                    maxlength="15"
+                    ng-minlength="2"
+                    ng-maxlength="15"
+                    required
+                    ng-model="company.co_state">
+            <div class="help-block" ng-messages="companyForm.state.$error" ng-show="companyForm.state.$touched">
+              <div ng-messages-include="partials/message.ejs"></div>
+            </div>
+          </div>
           <!--</div>-->
         </div>
-        <div class="col-md-6">
-          <div class="form-group">
-            <input class="form-control" placeholder="ZIP Code">
+        <div class="col-md-4">
+          <div class="form-group" ng-class="{ 'has-error': companyForm.zip.$touched && companyForm.zip.$invalid,'has-success': companyForm.zip.$touched && companyForm.zip.$valid}">
+            <input class="form-control" 
+                   name="zip"
+                   placeholder="ZIP Code" 
+                    minlength="5"
+                    maxlength="5"
+                    ng-minlength="5"
+                    ng-maxlength="5"
+                    required
+                   ng-model="company.co_zip">
+            <div class="help-block" ng-messages="companyForm.zip.$error" ng-show="companyForm.zip.$touched">
+              <div ng-messages-include="partials/message.ejs"></div>
+            </div>
           </div>
         </div>
       </div>
 
-      <div class="form-group">
-        <label>Industry</label>
-        <select class="form-control">
-          <option value="">Select Industry</option>
-        </select>
+      <div class="row">
+        <div class="col-md-6">
+               <div class="form-group" ng-class="{ 'has-error': companyForm.contact.$touched && companyForm.contact.$invalid,'has-success': companyForm.contact.$touched && companyForm.contact.$valid}">
+                  <label for="contact">Phone</label>
+                    <input class="form-control" 
+                          name="contact" 
+                          placeholder="Phone"
+                          required
+                          minlength="11"
+                          maxlength="11"
+                          ng-minlength="11"
+                          ng-maxlength="11"
+                          ng-model="company.co_contact">
+              <div class="help-block" ng-messages="companyForm.contact.$error" ng-show="companyForm.contact.$touched">
+                <div ng-messages-include="partials/message.ejs"></div>
+              </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+             <div class="form-group" ng-class="{ 'has-error': companyForm.fax.$touched && companyForm.fax.$invalid,'has-success': companyForm.fax.$touched && companyForm.fax.$valid}">
+                <label for="fax">Fax</label>
+                <input class="form-control" 
+                      name="fax" 
+                      placeholder="Fax"
+                      required
+                      minlength="11"
+                      maxlength="11"
+                      ng-minlength="11"
+                      ng-maxlength="11"
+                      ng-model="company.co_fax">
+                <div class="help-block" ng-messages="companyForm.fax.$error" ng-show="companyForm.fax.$touched">
+                  <div ng-messages-include="partials/message.ejs"></div>
+                </div>
+          </div>
+        </div>
       </div>
 
-      <div class="form-group">
-        <label>Entity Type</label>
-        <select class="form-control">
-          <option value="">Choose an option</option>
-        </select>
+      <div class="form-group" ng-class="{ 'has-error': companyForm.email.$touched && companyForm.email.$invalid,
+          'has-success': companyForm.email.$touched && companyForm.email.$valid}">
+        <label for="email">Email</label>
+        <input class="form-control"
+               placeholder="info@amctrading.com"
+               name="email"
+               minlength="3"
+               maxlength="30"
+               ng-minlength="3"
+               ng-maxlength="30"
+               required
+              ng-model="company.co_email">
+        <div class="help-block" ng-messages="companyForm.email.$error" ng-show="companyForm.email.$touched">
+          <div ng-messages-include="partials/message.ejs"></div>
+        </div>
       </div>
 
+       <label>Date Business Started</label>
+
+
+      <div class="row">
+        <div class="col-md-4">
+          <div class="form-group">
+            <!--<div class="form-control">-->
+            <select class="form-control" ng-model="company.co_month" ng-options="month.name for month in months">
+              <!--<option value="">Month</option>-->
+            </select>
+            <!--</div>-->
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="form-group">
+            <select class="form-control" ng-model="company.co_day" ng-options="day.name for day in days">
+              </select>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <select class="form-control" ng-model="company.co_year" ng-options="year.name for year in years" >
+            </select>
+          </div>
+        </div>
+      </div>
+    
       <div class="form-group">
-        <label for="percent_ownership">Percentage Ownership</label>
-        <input class="form-control" name="percent_ownership">
+        <label>Type of Entity</label>
+        <div class="form-group">
+            <select class="form-control" ng-model="company.co_type" ng-options="type.name for type in types" >
+            </select>
+          </div>
       </div>
 
-      <div class="form-group">
-        <label>Loan Purpose</label>
-        <select class="form-control">
-          <option value="">Select Options</option>
-        </select>
-      </div>
-
-      <div class="form-group">
-        <label for="tax_id">Federal/State Tax ID</label>
-        <input class="form-control" placeholder="12-3456789" name="tax_id">
-      </div>
-
-      <div class="form-group">
-        <label for="ssn">Social Security Number</label>
-        <input class="form-control" name="ssn">
+      <div class="form-group" ng-class="{ 'has-error': companyForm.products.$touched && companyForm.products.$invalid,
+          'has-success': companyForm.products.$touched && companyForm.products.$valid}">
+        <label for="percent_ownership">Products or Services Sold</label>
+        <input class="form-control" 
+               name="products"
+               ng-model="company.co_products"
+               required>
+        <div class="help-block" ng-messages="companyForm.products.$error" ng-show="companyForm.products.$touched">
+          <div ng-messages-include="partials/message.ejs"></div>
+        </div>
       </div>
 
       <div class="form-group">
