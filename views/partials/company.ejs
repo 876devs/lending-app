@@ -5,7 +5,7 @@
 
       <div class="form-group" ng-class="{ 'has-error': companyForm.company_name.$touched && companyForm.company_name.$invalid, 'has-success': companyForm.company_name.$touched && companyForm.company_name.$valid}">
         <label>Compnay Legal Name</label>
-        <input class="form-control" 
+        <input class="form-control"
                 placeholder="AMC Trading Inc"
                 name="company_name"
                 ng-model="company.co_name"
@@ -23,7 +23,7 @@
           <div class="col-md-8">
               <div class="form-group" ng-class="{ 'has-error': companyForm.company_dba.$touched && companyForm.company_dba.$invalid, 'has-success': companyForm.company_dba.$touched && companyForm.company_dba.$valid}">
                   <label>Compnay DBA Name</label>
-                  <input class="form-control" 
+                  <input class="form-control"
                           placeholder="AMC Feeds"
                           name="company_dba"
                           ng-model="company.co_dba"
@@ -40,7 +40,7 @@
           <div class="col-md-4">
             <div class="form-group" ng-class="{ 'has-error': companyForm.tax_id.$touched && companyForm.tax_id.$invalid, 'has-success': companyForm.tax_id.$touched && companyForm.tax_id.$valid}">
             <label>Tax ID</label>
-              <input class="form-control" 
+              <input class="form-control"
                       placeholder="Tax ID"
                       name="tax_id"
                       ng-model="company.co_tax_id"
@@ -53,18 +53,18 @@
               </div>
             </div>
           </div>
-             
+
       </div>
-   
+
 
       <div class="form-group" ng-class="{ 'has-error': companyForm.location.$touched && companyForm.location.$invalid,
           'has-success': companyForm.location.$touched && companyForm.location.$valid}">
         <label for="location">Business Address</label>
-        <input class="form-control" 
-                placeholder="421 South West" 
+        <input class="form-control"
+                placeholder="421 South West"
                 name="location"
                 minlength="3"
-                maxlength="30" 
+                maxlength="30"
                 ng-minlength="3"
                 ng-maxlength="30"
                 required
@@ -96,8 +96,8 @@
         <div class="col-md-4">
           <!--<div class="form-control">-->
           <div class="form-group" ng-class="{ 'has-error': companyForm.state.$touched && companyForm.state.$invalid,'has-success': companyForm.state.$touched && companyForm.state.$valid}">
-            <input class="form-control" 
-                    placeholder="State" 
+            <input class="form-control"
+                    placeholder="State"
                     name="state"
                     minlength="2"
                     maxlength="15"
@@ -113,9 +113,9 @@
         </div>
         <div class="col-md-4">
           <div class="form-group" ng-class="{ 'has-error': companyForm.zip.$touched && companyForm.zip.$invalid,'has-success': companyForm.zip.$touched && companyForm.zip.$valid}">
-            <input class="form-control" 
+            <input class="form-control"
                    name="zip"
-                   placeholder="ZIP Code" 
+                   placeholder="ZIP Code"
                     minlength="5"
                     maxlength="5"
                     ng-minlength="5"
@@ -133,8 +133,8 @@
         <div class="col-md-6">
                <div class="form-group" ng-class="{ 'has-error': companyForm.contact.$touched && companyForm.contact.$invalid,'has-success': companyForm.contact.$touched && companyForm.contact.$valid}">
                   <label for="contact">Phone</label>
-                    <input class="form-control" 
-                          name="contact" 
+                    <input class="form-control"
+                          name="contact"
                           placeholder="Phone"
                           required
                           minlength="11"
@@ -150,8 +150,8 @@
         <div class="col-md-6">
              <div class="form-group" ng-class="{ 'has-error': companyForm.fax.$touched && companyForm.fax.$invalid,'has-success': companyForm.fax.$touched && companyForm.fax.$valid}">
                 <label for="fax">Fax</label>
-                <input class="form-control" 
-                      name="fax" 
+                <input class="form-control"
+                      name="fax"
                       placeholder="Fax"
                       required
                       minlength="11"
@@ -210,19 +210,23 @@
           </div>
         </div>
       </div>
-    
+
       <div class="form-group">
         <label>Type of Entity</label>
         <div class="form-group">
-            <select class="form-control" ng-model="company.co_type" ng-options="type.name for type in types" >
+            <select class="form-control" ng-model="company.co_type" ng-options="type.name for type in types"
+              ng-change="selectedItemChanged()">
             </select>
           </div>
       </div>
 
+      <div ng-if="showPartner" ng-include="'partials/partner.ejs'">
+
+      </div>
       <div class="form-group" ng-class="{ 'has-error': companyForm.products.$touched && companyForm.products.$invalid,
           'has-success': companyForm.products.$touched && companyForm.products.$valid}">
         <label for="percent_ownership">Products or Services Sold</label>
-        <input class="form-control" 
+        <input class="form-control"
                name="products"
                ng-model="company.co_products"
                required>

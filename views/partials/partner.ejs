@@ -1,0 +1,193 @@
+<label for="">Full Name</label>
+<div class="row">
+  <div class="col-md-6">
+    <div class="form-group"
+         ng-class="{ 'has-error': companyForm.partner_first_name.$touched && companyForm.partner_first_name.$invalid,
+                'has-success': companyForm.partner_first_name.$touched && companyForm.partner_first_name.$valid}">
+      <input
+        name="partner_first_name"
+        type="text"
+        class="form-control"
+        placeholder="First Name"
+        minlength="3"
+        maxlength="30"
+        ng-minlength="3"
+        ng-maxlength="30"
+        required
+        ng-model="partner.pa_first_name">
+      <div class="help-block" ng-messages="companyForm.partner_first_name.$error" ng-show="companyForm.partner_first_name.$touched">
+        <div ng-messages-include="partials/message.ejs"></div>
+      </div>
+    </div>
+
+  </div>
+  <div class="col-md-6">
+    <div class="form-group" ng-class="{ 'has-error': companyForm.partner_last_name.$touched && companyForm.partner_last_name.$invalid,
+          'has-success': companyForm.partner_last_name.$touched && companyForm.partner_last_name.$valid}">
+      <input class="form-control"
+             name="partner_last_name"
+             placeholder="Last Name"
+             minlength="3"
+             maxlength="30"
+             ng-minlength="3"
+             ng-maxlength="30"
+             required
+             ng-model="partner.pa_last_name">
+      <div class="help-block" ng-messages="companyForm.partner_last_name.$error" ng-show="companyForm.partner_last_name.$touched">
+        <div ng-messages-include="partials/message.ejs"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="form-group" ng-class="{ 'has-error': companyForm.partner_location.$touched && companyForm.partner_location.$invalid,
+          'has-success': companyForm.partner_location.$touched && companyForm.partner_location.$valid}">
+  <label for="location">Home Address</label>
+  <input class="form-control"
+         placeholder="421 South West"
+         name="partner_location"
+         minlength="3"
+         maxlength="30"
+         ng-minlength="3"
+         ng-maxlength="30"
+         required
+         ng-model="partner.pa_home_address"
+         partner>
+  <div class="help-block" ng-messages="companyForm.partner_location.$error" ng-show="companyForm.partner_location.$touched">
+    <div ng-messages-include="partials/message.ejs"></div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-4">
+    <div class="form-group" ng-class="{ 'has-error': companyForm.partner_city.$touched && companyForm.partner_city.$invalid,'has-success': companyForm.partner_city.$touched && companyForm.partner_city.$valid}">
+      <input class="form-control"
+             placeholder="New York"
+             name="partner_city"
+             minlength="2"
+             maxlength="15"
+             ng-minlength="2"
+             ng-maxlength="15"
+             required
+             ng-model="partner.pa_city">
+      <div class="help-block" ng-messages="companyForm.partner_city.$error" ng-show="companyForm.partner_city.$touched">
+        <div ng-messages-include="partials/message.ejs"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <!--<div class="form-control">-->
+    <div class="form-group" ng-class="{ 'has-error': companyForm.partner_state.$touched && companyForm.partner_state.$invalid,'has-success': companyForm.partner_state.$touched && companyForm.partner_state.$valid}">
+      <input class="form-control"
+             placeholder="State"
+             name="partner_state"
+             minlength="2"
+             maxlength="15"
+             ng-minlength="2"
+             ng-maxlength="15"
+             required
+             ng-model="partner.pa_state">
+      <div class="help-block" ng-messages="companyForm.partner_state.$error" ng-show="companyForm.partner_state.$touched">
+        <div ng-messages-include="partials/message.ejs"></div>
+      </div>
+    </div>
+    <!--</div>-->
+  </div>
+  <div class="col-md-4">
+    <div class="form-group" ng-class="{ 'has-error': companyForm.partner_zip.$touched && companyForm.partner_zip.$invalid,'has-success': companyForm.partner_zip.$touched && companyForm.partner_zip.$valid}">
+      <input class="form-control"
+             name="partner_zip"
+             placeholder="ZIP Code"
+             minlength="5"
+             maxlength="5"
+             ng-minlength="5"
+             ng-maxlength="5"
+             required
+             ng-model="partner.pa_zip">
+      <div class="help-block" ng-messages="companyForm.partner_zip.$error" ng-show="companyForm.partner_zip.$touched">
+        <div ng-messages-include="partials/message.ejs"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="form-group" ng-class="{ 'has-error': companyForm.partner_contact.$touched && companyForm.partner_contact.$invalid,'has-success': companyForm.partner_contact.$touched && companyForm.partner_contact.$valid}">
+  <label for="contact">Cell Phone</label>
+  <input class="form-control"
+         name="partner_contact"
+         placeholder="Cell Phone"
+         required
+         minlength="11"
+         maxlength="11"
+         ng-minlength="11"
+         ng-maxlength="11"
+         ng-model="partner.pa_contact">
+  <div class="help-block" ng-messages="companyForm.partner_contact.$error" ng-show="companyForm.partner_contact.$touched">
+    <div ng-messages-include="partials/message.ejs"></div>
+  </div>
+</div>
+
+<label>Date of Birth</label>
+
+
+<div class="row">
+  <div class="col-md-4">
+    <div class="form-group">
+      <!--<div class="form-control">-->
+      <select class="form-control" ng-model="partner.pa_month" ng-options="month.name for month in months">
+        <!--<option value="">Month</option>-->
+      </select>
+      <!--</div>-->
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div class="form-group">
+      <select class="form-control" ng-model="partner.pa_day" ng-options="day.name for day in days">
+      </select>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="form-group">
+      <select class="form-control" ng-model="partner.pa_year" ng-options="year.name for year in years" >
+      </select>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-6">
+    <div class="form-group" ng-class="{ 'has-error': companyForm.partner_ssn.$touched && companyForm.partner_ssn.$invalid,'has-success': companyForm.partner_ssn.$touched && companyForm.partner_ssn.$valid}">
+      <label>SSN</label>
+      <input class="form-control"
+             name="partner_ssn"
+             placeholder="123-45-6789"
+             minlength="9"
+             maxlength="9"
+             ng-minlength="9"
+             ng-maxlength="9"
+             ng-model="partner.pa_ssn">
+      <div class="help-block" ng-messages="companyForm.partner_ssn.$error" ng-show="companyForm.partner_ssn.$touched">
+        <div ng-messages-include="partials/message.ejs"></div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="form-group" ng-class="{ 'has-error': companyForm.partner_ownership.$touched && companyForm.partner_ownership.$invalid,'has-success': companyForm.partner_ownership.$touched && companyForm.partner_ownership.$valid}">
+      <label>Ownership</label>
+      <input class="form-control"
+             name="partner_ownership"
+             placeholder="Ownership"
+             ng-model="partner.pa_ownership"
+             minlength="3"
+             maxlength="3"
+             ng-minlength="3"
+             ng-maxlength="3"
+             required>
+      <div class="help-block" ng-messages="companyForm.partner_ownership.$error" ng-show="companyForm.partner_ownership.$touched">
+        <div ng-messages-include="partials/message.ejs"></div>
+      </div>
+    </div>
+  </div>
+</div>

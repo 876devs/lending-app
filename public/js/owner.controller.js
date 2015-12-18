@@ -9,6 +9,7 @@
     OwnerController.$inject = ['dateService', 'nextPageService', '$scope', 'persistApplication'];
 
     function OwnerController(dateService, nextPageService, $scope, persistApplication){
+        persistApplication.reset();
         $scope.months = dateService.getMonths();
         $scope.days = dateService.getDays();
         $scope.years = dateService.getYears();
