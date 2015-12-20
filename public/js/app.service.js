@@ -1,7 +1,36 @@
 (function(){
-	var app = angular.module('app.services',['ngResource']);
+	angular
+    .module('app.services',['ngResource'])
+    .service('dateService', dateService)
+    .service('nextPageService', nextPageService)
+    .service('entityTypeService', entityTypeService)
+    .service('fileUploadService', fileUploadService)
+    .service('persistApplicantService', persistApplicantService);
 
-	app.service('dateService', function(){
+  nextPageService.$inject = ['$location'];
+  persistApplicantService.$inject = ['$window'];
+  fileUploadService.$inject = ['$http'];
+
+  function fileUploadService($http){
+    this.upload = function(file, url){
+      var formData = new FormData(),
+          isUploaded = false;
+
+      formData.append('file', file);
+
+      return $http.post(url, formData, {
+        transformRequest: angular.indentity,
+        headers: {'Content-Type': undefined}
+      }).success(function(){
+
+      }).error(function(){
+
+      });
+      //return isUploaded;
+    }
+  }
+
+	function dateService(){
 		this.getMonths = function(){
 			return [{"name": "Month", "value": ""},
 					{"name": "January", "value": "January"},
@@ -60,15 +89,15 @@
 			return years;
 		};
 
-	});
-	
-	app.service('nextPageService', function($location){
+	}
+
+	function nextPageService($location){
 		this.nextPage = function(path){
 			$location.path('/' + path);
 		};
-	});
+	}
 
-	app.service('entityTypeService', function(){
+	function entityTypeService(){
 		this.getTypes = function(){
 			return [ {"name": "Entity", "value": ""},
 					{"name": "LLC", "value": 'LLC'},
@@ -77,24 +106,20 @@
 					{"name": "Sole Proprietor", "value": 'Sole Proprietor'},
 					{"name": "LLP", "value": 'LLP'}];
 		}
-	});
+	}
 
-	app.service('fileUploadService', ['$http', function($http){
-		this.upload = function(file, url){
-			var formData = new FormData(),
-				isUploaded = false;
+  function persistApplicantService($window){
+    return {
+      setObject: function(key, value) {
+        $window.localStorage[key] = JSON.stringify(value);
+      },
+      getObject: function(key) {
+        return JSON.parse($window.localStorage[key] || '{}');
+      },
+      reset: function(){
+        $window.localStorage.clear();
+      }
+    }
+  }
 
-			formData.append('file', file);
-
-			return $http.post(url, formData, {
-				transformRequest: angular.indentity,
-				headers: {'Content-Type': undefined}
-			}).success(function(){
-				
-			}).error(function(){
-				
-			});
-		 //return isUploaded;
-		}	
-	}]);
 })();

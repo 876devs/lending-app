@@ -1,17 +1,12 @@
 (function(){
-	var app = angular.module('app.factories',[]);
+	angular.module('app.factories',['ngResource'])
+         .factory('submitApplicationFactory', submitApplicationFactory);
 
-	app.factory('persistApplication', function($window){
-		return {
-			setObject: function(key, value) {
-      			$window.localStorage[key] = JSON.stringify(value);
-    		},
-		    getObject: function(key) {
-		      return JSON.parse($window.localStorage[key] || '{}');
-		    },
-		    reset: function(){
-		    	$window.localStorage.clear();
-		    }
-		}
-	});
+  submitApplicationFactory.$inject = ['$resource'];
+
+  function submitApplicationFactory($resource){
+      return $resource('/application', {}, {
+            create: {method: 'POST'}
+      });
+  }
 })();

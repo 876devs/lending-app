@@ -6,10 +6,10 @@
     .module('ownerModule',[])
     .controller('OwnerController', OwnerController);
 
-    OwnerController.$inject = ['dateService', 'nextPageService', '$scope', 'persistApplication'];
+    OwnerController.$inject = ['dateService', 'nextPageService', '$scope', 'persistApplicantService'];
 
-    function OwnerController(dateService, nextPageService, $scope, persistApplication){
-        persistApplication.reset();
+    function OwnerController(dateService, nextPageService, $scope, persistApplicantService){
+        persistApplicantService.reset();
         $scope.months = dateService.getMonths();
         $scope.days = dateService.getDays();
         $scope.years = dateService.getYears();
@@ -19,9 +19,9 @@
         $scope.owner.ow_year = $scope.years[0];
         $scope.step = 1;
         $scope.percent  = 25;
-    
-        $scope.next = function(path){      
-          persistApplication.setObject('owner', $scope.owner);
+
+        $scope.next = function(path){
+          persistApplicantService.setObject('owner', $scope.owner);
           nextPageService.nextPage(path);
         };
     }

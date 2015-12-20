@@ -14,7 +14,7 @@
         ng-minlength="3"
         ng-maxlength="30"
         required
-        ng-model="partner.pa_first_name">
+        ng-model="company.pa_first_name">
       <div class="help-block" ng-messages="companyForm.partner_first_name.$error" ng-show="companyForm.partner_first_name.$touched">
         <div ng-messages-include="partials/message.ejs"></div>
       </div>
@@ -32,7 +32,7 @@
              ng-minlength="3"
              ng-maxlength="30"
              required
-             ng-model="partner.pa_last_name">
+             ng-model="company.pa_last_name">
       <div class="help-block" ng-messages="companyForm.partner_last_name.$error" ng-show="companyForm.partner_last_name.$touched">
         <div ng-messages-include="partials/message.ejs"></div>
       </div>
@@ -51,7 +51,7 @@
          ng-minlength="3"
          ng-maxlength="30"
          required
-         ng-model="partner.pa_home_address"
+         ng-model="company.pa_home_address"
          partner>
   <div class="help-block" ng-messages="companyForm.partner_location.$error" ng-show="companyForm.partner_location.$touched">
     <div ng-messages-include="partials/message.ejs"></div>
@@ -69,7 +69,7 @@
              ng-minlength="2"
              ng-maxlength="15"
              required
-             ng-model="partner.pa_city">
+             ng-model="company.pa_city">
       <div class="help-block" ng-messages="companyForm.partner_city.$error" ng-show="companyForm.partner_city.$touched">
         <div ng-messages-include="partials/message.ejs"></div>
       </div>
@@ -87,7 +87,7 @@
              ng-minlength="2"
              ng-maxlength="15"
              required
-             ng-model="partner.pa_state">
+             ng-model="company.pa_state">
       <div class="help-block" ng-messages="companyForm.partner_state.$error" ng-show="companyForm.partner_state.$touched">
         <div ng-messages-include="partials/message.ejs"></div>
       </div>
@@ -104,7 +104,7 @@
              ng-minlength="5"
              ng-maxlength="5"
              required
-             ng-model="partner.pa_zip">
+             ng-model="company.pa_zip">
       <div class="help-block" ng-messages="companyForm.partner_zip.$error" ng-show="companyForm.partner_zip.$touched">
         <div ng-messages-include="partials/message.ejs"></div>
       </div>
@@ -122,7 +122,7 @@
          maxlength="11"
          ng-minlength="11"
          ng-maxlength="11"
-         ng-model="partner.pa_contact">
+         ng-model="company.pa_contact">
   <div class="help-block" ng-messages="companyForm.partner_contact.$error" ng-show="companyForm.partner_contact.$touched">
     <div ng-messages-include="partials/message.ejs"></div>
   </div>
@@ -135,7 +135,7 @@
   <div class="col-md-4">
     <div class="form-group">
       <!--<div class="form-control">-->
-      <select class="form-control" ng-model="partner.pa_month" ng-options="month.name for month in months">
+      <select class="form-control" ng-model="company.pa_month" ng-options="month.name for month in months">
         <!--<option value="">Month</option>-->
       </select>
       <!--</div>-->
@@ -144,13 +144,13 @@
 
   <div class="col-md-4">
     <div class="form-group">
-      <select class="form-control" ng-model="partner.pa_day" ng-options="day.name for day in days">
+      <select class="form-control" ng-model="company.pa_day" ng-options="day.name for day in days">
       </select>
     </div>
   </div>
   <div class="col-md-4">
     <div class="form-group">
-      <select class="form-control" ng-model="partner.pa_year" ng-options="year.name for year in years" >
+      <select class="form-control" ng-model="company.pa_year" ng-options="year.name for year in years" >
       </select>
     </div>
   </div>
@@ -167,7 +167,7 @@
              maxlength="9"
              ng-minlength="9"
              ng-maxlength="9"
-             ng-model="partner.pa_ssn">
+             ng-model="company.pa_ssn">
       <div class="help-block" ng-messages="companyForm.partner_ssn.$error" ng-show="companyForm.partner_ssn.$touched">
         <div ng-messages-include="partials/message.ejs"></div>
       </div>
@@ -179,7 +179,7 @@
       <input class="form-control"
              name="partner_ownership"
              placeholder="Ownership"
-             ng-model="partner.pa_ownership"
+             ng-model="company.pa_ownership"
              minlength="3"
              maxlength="3"
              ng-minlength="3"

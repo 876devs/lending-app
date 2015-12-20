@@ -11,8 +11,8 @@
   var Docusign = require('./docusign');
 
   router.get('/docusign', Docusign.index);
-  router.post('/send', Docusign.sendDoc);
-  router.get('/esign', Docusign.sign);
+  //router.post('/send', Docusign.sendDoc);
+  //router.get('/esign', Docusign.sign);
 
   module.exports = router;
 })();
