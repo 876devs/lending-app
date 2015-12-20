@@ -19,7 +19,7 @@
             function link(scope, element, attrs){
                var model = $parse(attrs.fileModel),
                    modelSetter = model.assign;
-                  
+
                   element.bind('change', function(){
                      scope.$apply(function(){
                         modelSetter(scope, element[0].files[0]);
@@ -38,7 +38,7 @@
             return directive;
 
             function link(scope, element, attrs, model){
-              
+
               var options = {
                   types: ['address'],
                   componentRestrictions: {country: 'us'}
@@ -71,7 +71,7 @@
             return directive;
 
             function link(scope, element, attrs, model){
-              
+
               var options = {
                   types: ['address'],
                   componentRestrictions: {country: 'us'}
@@ -104,7 +104,7 @@
             return directive;
 
             function link(scope, element, attrs, model){
-              
+
               var options = {
                   types: ['address'],
                   componentRestrictions: {country: 'us'}
@@ -118,13 +118,13 @@
                   var address = place.formatted_address;
                   model.$setViewValue(element.val());
                   var address_split = address.split(", ");
-                  scope.partner.pa_home_address = address_split[0];
-                  scope.partner.pa_city = address_split[1];
+                  scope.company.pa_home_address = address_split[0];
+                  scope.company.pa_city = address_split[1];
                   var state_city = address_split[2].split(" ");
-                  scope.partner.pa_state = state_city[0];
-                  scope.partner.pa_zip = state_city[1];
+                  scope.company.pa_state = state_city[0];
+                  scope.company.pa_zip = state_city[1];
                 });
               });
             }
-         }//end of owner     
+         }//end of owner
 })();

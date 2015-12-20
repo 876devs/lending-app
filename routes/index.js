@@ -7,6 +7,11 @@ router.get('/', function(req, res) {
   res.render('index', { title: 'Express' });
 });
 
+router.post('/application', function(req, res){
+  console.log(req.body);
+  res.end();
+});
+
 // router.get('/', function(req, res){
 //   res.redirect('/');
 // });
